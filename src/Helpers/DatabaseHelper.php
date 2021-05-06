@@ -48,4 +48,20 @@ class DatabaseHelper
         $tablesArray = explode(',', (string)self::getAllTables());
         return array_merge(array_diff($tablesArray, self::getNotAllowedTables()));
     }
+
+    /**
+     * Disable foreign key
+     */
+    public static function disableForeignKey()
+    {
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+    }
+
+    /**
+     * Enables foreign key
+     */
+    public static function enableForeignKey()
+    {
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+    }
 }
